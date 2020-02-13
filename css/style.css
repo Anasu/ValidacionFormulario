@@ -1,0 +1,41 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+
+div {
+  background-color: #6E9E41;
+  padding: 5% 10%;
+}
+
+form {
+  background-color: #CFDFC0;
+  padding: 5% 10%;
+  min-width: 35vw;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  color: #FCFDFB;
+  margin-bottom: 1rem;
+}
+
+label {
+  color: #646464;
+}
+
+input {
+  display: block;
+  color: #646464;
+  width: 100%;
+  padding: 1.5rem 5%;
+  margin-bottom: 1rem;
+}
