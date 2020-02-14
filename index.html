@@ -11,17 +11,19 @@
   <section>
     <div>
       <h1>Formulario de registro</h1>
-      <form>
+      <form onsubmit="validation();" action="#">
         <input type="text" id="fname" name="fname" placeholder="Nombres">
         <input type="text" id="lname" name="lname" placeholder="Apellidos">
-        <input type="email" id="lname" name="lname" placeholder="Correo">
-        <input type="text" id="lname" name="lname" placeholder="Usuario">
-        <input type="text" id="lname" name="lname" placeholder="Contraseña">
-        <input type="number" id="lname" name="lname" placeholder="Teléfono">
+        <input type="email" id="email" name="email" placeholder="Correo">
+        <input type="text" id="username" name="username" placeholder="Usuario">
+        <input type="text" id="pass" name="pass" placeholder="Contraseña">
+        <input type="number" id="phone" name="phone" placeholder="Teléfono">
         <input type="submit" value="Registrar">
       </form>
     </div>
   </section>
+
+  <script src="script/script.js"></script>
 </body>
 </html>
 
