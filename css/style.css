@@ -37,3 +37,13 @@ input {
   padding: 0.5rem 5%;
   margin-bottom: 1rem;
 }
+
+#fname_error, #lname_error, #email_error, #user_error, #pass_error, #phone_error {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #CFDFC0;
+  color: #646464;
+  margin-bottom: 1rem;
+  margin-top: -1rem; /* hack feo */
+  padding: 0 3%;
+  font-size: 0.75rem;
+}
