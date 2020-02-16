@@ -94,7 +94,7 @@ let valMail = function(email)
             }
             else
             {
-                alert("2 arrobas.");
+                email.errorState = true;
                 return;
             }
         }
@@ -102,12 +102,12 @@ let valMail = function(email)
 
     if(arrPos == null)
     {
-        alert("no arroba.");
+        email.errorState = true;
         return;
     }
     else if(arrPos == 0)
     {
-        alert("oe, pon el mail bien po csm");
+        email.errorState = true;
     }
     
     let pntPos = null;
@@ -122,15 +122,15 @@ let valMail = function(email)
             
             if(email.value[i-1] == ".")
             {
-                alert("tengo 2 puntos seguidos");
+                email.errorState = true;
             }
             else if(email.value[i-1] == "@")
             {
-                alert("tengo una arroba y un punto");
+                email.errorState = true;
             }
             else if(i == email.value.length-1)
             {
-                alert("termina con un punto");
+                email.errorState = true;
             }
         }
         
