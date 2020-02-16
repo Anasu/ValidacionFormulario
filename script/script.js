@@ -27,7 +27,13 @@ let validation = function()
     }
 
 
-    let email = document.getElementById("email").value;
+    let email = 
+    {
+        'value': document.getElementById("email").value,
+        'maxLength': 100,
+        'errorID': document.getElementById("email_error"),
+        'errorState': false 
+    }
     let phone = document.getElementById("phone").value;
     
     
@@ -78,9 +84,9 @@ let valText = function(validado)
 let valMail = function(email)
 {
     let arrPos = null;
-    for(let i = 0; i < email.length; i++)
+    for(let i = 0; i < email.value.length; i++)
     {
-        if(email[i] == '@')
+        if(email.value[i] == '@')
         {
             if(arrPos == null)
             {
@@ -105,24 +111,24 @@ let valMail = function(email)
     }
     
     let pntPos = null;
-    for (let i = arrPos+1; i < email.length ; i ++)
+    for (let i = arrPos+1; i < email.value.length ; i ++)
     {
-        if(email[i] == ".")
+        if(email.value[i] == ".")
         {
             if(pntPos == null)
             {
                 pntPos = i;
             }
             
-            if(email[i-1] == ".")
+            if(email.value[i-1] == ".")
             {
                 alert("tengo 2 puntos seguidos");
             }
-            else if(email[i-1] == "@")
+            else if(email.value[i-1] == "@")
             {
                 alert("tengo una arroba y un punto");
             }
-            else if(i == email.length-1)
+            else if(i == email.value.length-1)
             {
                 alert("termina con un punto");
             }
