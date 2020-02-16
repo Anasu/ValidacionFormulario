@@ -38,7 +38,13 @@ let validation = function()
         'errorState': false 
     }
 
-    let phone = document.getElementById("phone").value;
+    let phone = 
+    {
+        'value': document.getElementById("phone").value,
+        'maxLength': 15,
+        'errorID': document.getElementById("phone_error"),
+        'errorState': false
+    }
     
     // Validaciones
     valText(name);
@@ -46,6 +52,7 @@ let validation = function()
     valText(user);
     valText(pass);
     valMail(email);
+    valNum(phone);
 
     // Display de errores
     errText(name);
@@ -53,8 +60,8 @@ let validation = function()
     errText(user);
     errText(pass);
     errText(email);
+    errText(phone);
 
-    //llamar funcion de validacion de error que lee bool
 
     event.preventDefault();
 }
@@ -67,7 +74,6 @@ let errText = function(validado)
         error_div.style.display = "block";
     }
 }
-
 let valText = function(validado)
 {
     let error_div = validado.errorID;
@@ -87,7 +93,6 @@ let valText = function(validado)
         validado.errorState = true;
     }
 }
-
 let valMail = function(email)
 {
     // Evalua existencia y posición de @
@@ -164,5 +169,15 @@ let valMail = function(email)
     {
         email.errorState = true;
         return;
+    }
+}
+let valNum = function(numero)
+{
+    for(let i = 0; i < numero.value.length; i++)
+    {
+        if (numero.value[i] < "9" || numero.value[i] > "0")
+        {
+            numero.errorState = true;
+        }
     }
 }
