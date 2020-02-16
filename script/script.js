@@ -11,19 +11,22 @@ let validation = function()
     {
         'value': document.getElementById("lname").value,
         'maxLength': 80,
-        'errorID': document.getElementById("lname_error")
+        'errorID': document.getElementById("lname_error"),
+        'errorState': false
     }
     let user = 
     {
         'value': document.getElementById("username").value,
         'maxLength': 20,
-        'errorID': document.getElementById("user_error")
+        'errorID': document.getElementById("user_error"),
+        'errorState': false
     }
     let pass = 
     {
         'value': document.getElementById("pass").value,
         'maxLength': null,
-        'errorID': document.getElementById("pass_error")
+        'errorID': document.getElementById("pass_error"),
+        'errorState': false
     }
 
 
@@ -34,6 +37,7 @@ let validation = function()
         'errorID': document.getElementById("email_error"),
         'errorState': false 
     }
+
     let phone = document.getElementById("phone").value;
     
     // Validaciones
