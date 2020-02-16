@@ -61,7 +61,7 @@ let validation = function()
     errText(pass);
     errText(email);
     errText(phone);
-    
+
     event.preventDefault();
 }
 
@@ -174,9 +174,14 @@ let valNum = function(numero)
 {
     for(let i = 0; i < numero.value.length; i++)
     {
-        if (numero.value[i] < "9" || numero.value[i] > "0")
+        if (numero.value[i] > "9" || numero.value[i] < "0")
         {
             numero.errorState = true;
         }
     }
+    if(numero.value.length > numero.maxLength)
+    {
+        numero.errorState = true;
+    }
+
 }
