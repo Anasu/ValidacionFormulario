@@ -53,7 +53,7 @@ let validation = function()
     errText(user);
     errText(pass);
     errText(email);
-    
+
     //llamar funcion de validacion de error que lee bool
 
     event.preventDefault();
@@ -160,4 +160,9 @@ let valMail = function(email)
         return;
     }
 
+    if(email.value.length > email.maxLength)
+    {
+        email.errorState = true;
+        return;
+    }
 }
