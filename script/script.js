@@ -45,6 +45,7 @@ let validation = function()
         'errorID': document.getElementById("phone_error"),
         'errorState': false
     }
+    let error = false;
     
     // Validaciones
     valText(name);
@@ -62,15 +63,27 @@ let validation = function()
     errText(email);
     errText(phone);
 
+    bienvenida(error, name, lastName, user, pass);
     event.preventDefault();
+}
+let bienvenida = function(error, fname, lname, user, pass)
+{
+    if(error == false)
+    {
+        alert("¡Bienvenido " + fname.value + " " + lname.value +
+            "! Tu usuario es " + user.value + " y tu contraseña "+
+            pass.value + ".");
+    }
 }
 
 let errText = function(validado)
 {
     let error_div = validado.errorID;
     error_div.style.display = "none";
+    error = false;
     if(validado.errorState){
         error_div.style.display = "block";
+        error = true;
     }
 }
 let valText = function(validado)
