@@ -61,7 +61,7 @@ let validation = function()
     errText(pass);
     errText(email);
     errText(phone);
-    
+
     event.preventDefault();
 }
 
@@ -172,9 +172,21 @@ let valMail = function(email)
 }
 let valNum = function(numero)
 {
-    for(let i = 0; i < numero.value.length; i++)
+    if (numero.value == "")
     {
-        if (numero.value[i] < "9" || numero.value[i] > "0")
+        console.log("no hay nada :c")
+        numero.errorState = true;
+    }
+    else
+    {
+        for(let i = 0; i < numero.value.length; i++)
+        {
+            if (numero.value[i] > "9" || numero.value[i] < "0")
+            {
+                numero.errorState = true;
+            }
+        }
+        if(numero.value.length > numero.maxLength)
         {
             numero.errorState = true;
         }
