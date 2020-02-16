@@ -33,6 +33,12 @@ let validation = function()
     
     valText(name);
     errText(name);
+    valText(lastName);
+    errText(lastName);
+    valText(user);
+    errText(user);
+    valText(pass);
+    errText(pass);
     valMail(email);
     
     //llamar funcion de validacion de error que lee bool
@@ -61,13 +67,12 @@ let valText = function(validado)
     }
     else if(typeof(validado.value) != 'string')
     {
-        alert("Por favor ingresa tu nombre como texto.");
+        validado.errorState = true;
     }
-    else if(validado.value.length > validado.maxLength)
+    else if(validado.maxLength!= null && validado.value.length > validado.maxLength)
     {
-        alert("Por favor ingresa un nombre de 30 caracteres o menos.");
+        validado.errorState = true;
     }
-    //console.log(letiable + " desde la funcion valName.");
 }
 
 let valMail = function(email)
