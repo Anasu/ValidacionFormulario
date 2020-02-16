@@ -36,16 +36,19 @@ let validation = function()
     }
     let phone = document.getElementById("phone").value;
     
-    
+    // Validaciones
     valText(name);
-    errText(name);
     valText(lastName);
-    errText(lastName);
     valText(user);
-    errText(user);
     valText(pass);
-    errText(pass);
     valMail(email);
+
+    // Display de errores
+    errText(name);
+    errText(lastName);
+    errText(user);
+    errText(pass);
+    errText(email);
     
     //llamar funcion de validacion de error que lee bool
 
