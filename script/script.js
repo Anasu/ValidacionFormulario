@@ -71,7 +71,7 @@ let bienvenida = function(error, fname, lname, user, pass)
     if(error == false)
     {
         alert("¡Bienvenido " + fname.value + " " + lname.value +
-            ". Tu usuario es " + user.value + " y tu contraseña "+
+            "! Tu usuario es " + user.value + " y tu contraseña "+
             pass.value + ".");
     }
 }
