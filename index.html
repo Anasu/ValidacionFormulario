@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <section>
+    <div>
+      <h1>Formulario de registro</h1>
+      <form onsubmit="validation();" action="#">
+        <input type="text" id="fname" name="fname" placeholder="Nombres">
+        <div id="fname_error" style="display:none;">Por favor ingrese su nombre. No debe superar los 30 caracteres.</div>
+        <input type="text" id="lname" name="lname" placeholder="Apellidos">
+        <div id="lname_error" style="display:none;">Por favor ingrese su apellido. No debe superar los 80 caracteres.</div>
+        <input type="text" id="email" name="email" placeholder="Correo">
+        <div id="email_error" style="display:none;">Por favor ingrese su e-mail. Debe cumplir con el formato mi.email@dominio.com. No debe superar los 100 caracteres</div>
+        <input type="text" id="username" name="username" placeholder="Usuario">
+        <div id="user_error" style="display:none;">Por favor ingrese su nombre de usuario. No debe superar los 20 caracteres.</div>
+        <input type="text" id="pass" name="pass" placeholder="Contraseña">
+        <div id="pass_error" style="display:none;">Por favor ingrese su contraseña.</div>
+        <input type="text" id="phone" name="phone" placeholder="Teléfono">
+        <div id="phone_error" style="display:none;">Por favor ingrese su teléfono. Solo puede ingresar números. No debe superar los 15 caracteres.</div>
+        <input type="submit" value="Registrar">
+      </form>
+    </div>
+  </section>
+
+  <script src="script/script.js"></script>
+</body>
+</html>
+
+
