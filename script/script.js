@@ -11,36 +11,49 @@ let validation = function()
     {
         'value': document.getElementById("lname").value,
         'maxLength': 80,
-        'errorID': document.getElementById("lname_error")
+        'errorID': document.getElementById("lname_error"),
+        'errorState': false
     }
     let user = 
     {
         'value': document.getElementById("username").value,
         'maxLength': 20,
-        'errorID': document.getElementById("user_error")
+        'errorID': document.getElementById("user_error"),
+        'errorState': false
     }
     let pass = 
     {
         'value': document.getElementById("pass").value,
         'maxLength': null,
-        'errorID': document.getElementById("pass_error")
+        'errorID': document.getElementById("pass_error"),
+        'errorState': false
     }
 
 
-    let email = document.getElementById("email").value;
+    let email = 
+    {
+        'value': document.getElementById("email").value,
+        'maxLength': 100,
+        'errorID': document.getElementById("email_error"),
+        'errorState': false 
+    }
+
     let phone = document.getElementById("phone").value;
     
-    
+    // Validaciones
     valText(name);
-    errText(name);
     valText(lastName);
-    errText(lastName);
     valText(user);
-    errText(user);
     valText(pass);
-    errText(pass);
     valMail(email);
-    
+
+    // Display de errores
+    errText(name);
+    errText(lastName);
+    errText(user);
+    errText(pass);
+    errText(email);
+
     //llamar funcion de validacion de error que lee bool
 
     event.preventDefault();
@@ -77,18 +90,22 @@ let valText = function(validado)
 
 let valMail = function(email)
 {
+    // Evalua existencia y posición de @
     let arrPos = null;
-    for(let i = 0; i < email.length; i++)
+    for(let i = 0; i < email.value.length; i++)
     {
-        if(email[i] == '@')
+        if(email.value[i] == '@')
         {
             if(arrPos == null)
             {
+                // Se asegura que no haya una @ anterior 
+                // y guarda la posición actual de la @ 
                 arrPos = i;
             }
             else
             {
-                alert("2 arrobas.");
+                // Hay 2 o más arroba
+                email.errorState = true;
                 return;
             }
         }
@@ -96,35 +113,41 @@ let valMail = function(email)
 
     if(arrPos == null)
     {
-        alert("no arroba.");
+        // No hay @
+        email.errorState = true;
         return;
     }
     else if(arrPos == 0)
     {
-        alert("oe, pon el mail bien po csm");
+        // Parte con una @
+        email.errorState = true;
     }
-    
+    // Evalua la existencia y posicion de punto
     let pntPos = null;
-    for (let i = arrPos+1; i < email.length ; i ++)
+    for (let i = arrPos+1; i < email.value.length ; i ++)
     {
-        if(email[i] == ".")
+        if(email.value[i] == ".")
         {
             if(pntPos == null)
             {
+                // Guarda la posición del punto en i
                 pntPos = i;
             }
             
-            if(email[i-1] == ".")
+            if(email.value[i-1] == ".")
             {
-                alert("tengo 2 puntos seguidos");
+               // Hay 2 puntos seguidos
+                email.errorState = true;
             }
-            else if(email[i-1] == "@")
+            else if(email.value[i-1] == "@")
             {
-                alert("tengo una arroba y un punto");
+                 // Hay una @ seguida de un .
+                email.errorState = true;
             }
-            else if(i == email.length-1)
+            else if(i == email.value.length-1)
             {
-                alert("termina con un punto");
+                // Mail termina en punto
+                email.errorState = true;
             }
         }
         
@@ -132,8 +155,14 @@ let valMail = function(email)
 
     if(pntPos == null)
     {
-        alert("no punto. No capes.");
+        // No encontró un punto
+        email.errorState = true;
         return;
     }
 
+    if(email.value.length > email.maxLength)
+    {
+        email.errorState = true;
+        return;
+    }
 }
