@@ -61,8 +61,7 @@ let validation = function()
     errText(pass);
     errText(email);
     errText(phone);
-
-
+    
     event.preventDefault();
 }
 
