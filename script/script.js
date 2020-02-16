@@ -86,6 +86,7 @@ let valText = function(validado)
 
 let valMail = function(email)
 {
+    // Evalua existencia y posición de @
     let arrPos = null;
     for(let i = 0; i < email.value.length; i++)
     {
@@ -93,10 +94,13 @@ let valMail = function(email)
         {
             if(arrPos == null)
             {
+                // Se asegura que no haya una @ anterior 
+                // y guarda la posición actual de la @ 
                 arrPos = i;
             }
             else
             {
+                // Hay 2 o más arroba
                 email.errorState = true;
                 return;
             }
@@ -105,14 +109,16 @@ let valMail = function(email)
 
     if(arrPos == null)
     {
+        // No hay @
         email.errorState = true;
         return;
     }
     else if(arrPos == 0)
     {
+        // Parte con una @
         email.errorState = true;
     }
-    
+    // Evalua la existencia y posicion de punto
     let pntPos = null;
     for (let i = arrPos+1; i < email.value.length ; i ++)
     {
@@ -120,19 +126,23 @@ let valMail = function(email)
         {
             if(pntPos == null)
             {
+                // Guarda la posición del punto en i
                 pntPos = i;
             }
             
             if(email.value[i-1] == ".")
             {
+               // Hay 2 puntos seguidos
                 email.errorState = true;
             }
             else if(email.value[i-1] == "@")
             {
+                 // Hay una @ seguida de un .
                 email.errorState = true;
             }
             else if(i == email.value.length-1)
             {
+                // Mail termina en punto
                 email.errorState = true;
             }
         }
@@ -141,7 +151,8 @@ let valMail = function(email)
 
     if(pntPos == null)
     {
-        alert("no punto. No capes.");
+        // No encontró un punto
+        email.errorState = true;
         return;
     }
 
