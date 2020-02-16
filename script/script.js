@@ -25,21 +25,21 @@ let validation = function()
         'maxLength': null,
         'errorID': document.getElementById("pass_error")
     }
-  
-  var name = document.getElementById("fname").value;
-  var lastName = document.getElementById("lname").value;
-  var email = document.getElementById("email").value;
-  var user = document.getElementById("username").value;
-  var pass = document.getElementById("pass").value;
-  var phone = document.getElementById("phone").value;
-  
+
+
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
-
+    
+    
     valText(name);
     errText(name);
-  event.preventDefault();
+    valMail(email);
+    
+    //llamar funcion de validacion de error que lee bool
+
+    event.preventDefault();
 }
+
 let errText = function(validado)
 {
     let error_div = validado.errorID;
@@ -70,3 +70,65 @@ let valText = function(validado)
     //console.log(letiable + " desde la funcion valName.");
 }
 
+let valMail = function(email)
+{
+    let arrPos = null;
+    for(let i = 0; i < email.length; i++)
+    {
+        if(email[i] == '@')
+        {
+            if(arrPos == null)
+            {
+                arrPos = i;
+            }
+            else
+            {
+                alert("2 arrobas.");
+                return;
+            }
+        }
+    }
+
+    if(arrPos == null)
+    {
+        alert("no arroba.");
+        return;
+    }
+    else if(arrPos == 0)
+    {
+        alert("oe, pon el mail bien po csm");
+    }
+    
+    let pntPos = null;
+    for (let i = arrPos+1; i < email.length ; i ++)
+    {
+        if(email[i] == ".")
+        {
+            if(pntPos == null)
+            {
+                pntPos = i;
+            }
+            
+            if(email[i-1] == ".")
+            {
+                alert("tengo 2 puntos seguidos");
+            }
+            else if(email[i-1] == "@")
+            {
+                alert("tengo una arroba y un punto");
+            }
+            else if(i == email.length-1)
+            {
+                alert("termina con un punto");
+            }
+        }
+        
+    }
+
+    if(pntPos == null)
+    {
+        alert("no punto. No capes.");
+        return;
+    }
+
+}
